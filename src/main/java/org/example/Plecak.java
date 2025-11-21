@@ -31,4 +31,14 @@ public class Plecak {
         }
         return 'x';
     }
+    public int pryjorytet(){
+        String znaki = "abcdefghijklmnoprstuwxyzABCDEFGHIJKLMNOPRSTUWXYZ";
+        char a = zleSpakowany();
+        for (int i = 0; i < znaki.length(); i++) {
+            if (znaki.charAt(i) == a){
+                return i+1;
+            }
+        }
+        return 0;
+    }
 }

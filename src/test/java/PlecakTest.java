@@ -41,6 +41,14 @@ public class PlecakTest {
         char element = plecak.zleSpakowany();
         //then
         Assertions.assertEquals('p',element);
+    }
+    @Test
+    public void pryjorytet(){
+        String z = "vJrwpWtwJgWrhcsFMMfFFhFp";
 
+        Plecak plecak = new Plecak(z);
+
+        int pryjorytet = plecak.pryjorytet();
+        Assertions.assertEquals(16, pryjorytet);
     }
 }
