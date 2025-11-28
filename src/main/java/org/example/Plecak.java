@@ -7,38 +7,31 @@ public class Plecak {
         this.zawartosc = zawartosc;
     }
 
-    public String getZawartosc() {
-        return zawartosc;
-    }
-
-    public void setZawartosc(String zawartosc) {
-        this.zawartosc = zawartosc;
-    }
-
     public String zawartoscKomoryJeden() {
-        return zawartosc.substring(0,zawartosc.length()/2);
+        return zawartosc.substring(0, zawartosc.length() / 2);
     }
 
     public String zawartoscKomoryDwa() {
-        return zawartosc.substring(zawartosc.length()/2);
+        return zawartosc.substring(zawartosc.length() / 2);
     }
-    public char zleSpakowany(){
-        for (int i = 0; i < zawartoscKomoryJeden().length(); i++) {
-            char znak = zawartoscKomoryJeden().charAt(i);
-            if (zawartoscKomoryDwa().contains(String.valueOf(znak))){
+
+    public char zleSpakowany() {
+        String k1 = zawartoscKomoryJeden();
+        String k2 = zawartoscKomoryDwa();
+
+        for (int i = 0; i < k1.length(); i++) {
+            char znak = k1.charAt(i);
+            if (k2.indexOf(znak) != -1) {
                 return znak;
             }
         }
-        return 'x';
+        return 'x'; // w treści zadania nie występuje taki przypadek
     }
-    public int pryjorytet(){
-        String znaki = "abcdefghijklmnoprstuwxyzABCDEFGHIJKLMNOPRSTUWXYZ";
-        char a = zleSpakowany();
-        for (int i = 0; i < znaki.length(); i++) {
-            if (znaki.charAt(i) == a){
-                return i+1;
-            }
-        }
+
+    public int priorytet() {
+        char c = zleSpakowany();
+        if (c >= 'a' && c <= 'z') return c - 'a' + 1;     // 1–26
+        if (c >= 'A' && c <= 'Z') return c - 'A' + 27;    // 27–52
         return 0;
     }
 }
